@@ -1,14 +1,14 @@
-#**Traffic Sign Recognition**  
+# Traffic Sign Recognition 
 
 ---
-###Writeup / README
+### Writeup / README
 
 ### All required files are here
 Including the python notebook, write up and the tensorflow saved data.
 
-###Data Set Summary & Exploration
+### Data Set Summary & Exploration
 
-####1. Basic Data Set Summary
+#### 1. Basic Data Set Summary
 
 The code for this step is contained in the second code cell of the IPython notebook. I used the built-in python len() function to calculate summary statistics of the traffic signs data set:
 
@@ -17,7 +17,7 @@ The code for this step is contained in the second code cell of the IPython noteb
 * Image data shape = 32*32
 * Number of classes = 43
 
-####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
+#### 2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
 
 The code for this step is contained in the fifth code cell of the IPython notebook.  
 
@@ -44,12 +44,12 @@ Here is an example of a traffic sign image before and after grayscaling, sorry f
 ![Before Processing](./imag1.png)
 ![After Processing](./imag2.png)
 
-####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. 
+#### 2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. 
 
 For the training, validation and testing data, I use them directly from the first cell of code the IPython notebook provided.
 
 
-####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### 3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model is based on the Lenet structure, however, inorder to provide higher accuracy, I made some changed to each layer, I think lenet is good, however, for the traffic signs case, the traffic signs has more features en consisted of the following layers
 
@@ -72,13 +72,13 @@ My final model is based on the Lenet structure, however, inorder to provide high
 | Fully connected	| outputs 43      	|
 
 
-####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 To train the model, I used the softmax_cross_entropy as the loss function, and used the AdamOptimizer with learning rate 0.001 to train the model. 
 
 I used batch size as 128, and epochs as 20 to trained the model, because I used the GPU machine, I think more epochs may result in higher accuracy, however, from the training logs I found out that maybe 15 epochs is enough.
 
-####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 
@@ -97,9 +97,9 @@ My iterative approach:
 ![cnn_visualization](cnnn.png)
  
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
 
@@ -108,7 +108,7 @@ Here are five German traffic signs that I found on the web:
 
 I think all the images would be easy to classify, because they are clean image,the background is very simple, compare to the training set.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set 
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set 
 The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
 
 Here are the results of the prediction:
@@ -126,7 +126,7 @@ The model was able to correctly guess 6 of the 6 traffic signs, which gives an a
 
 Compare the old test set, the accuracy is higher with the current architecture, it shows the model is working well, and some of my assumptions about how the architecture affect the accuracy of model is right. Because, as I said above at the first stage, I use original LeNet5 architecture, with that, the accuracy on the new test images(same set as these ones) was only around 40% compare to the 85% on test set, I think by that time it was overfitting. But after I changed the new structure, it became better.
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
  The result can be showed as:
 ![alt text](res.jpeg)
