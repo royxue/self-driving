@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from warp import *
 
 
 def vis(undist, warped, left_fit, right_fit, src, dst):
@@ -14,7 +15,7 @@ def vis(undist, warped, left_fit, right_fit, src, dst):
     ploty = np.linspace(0, warped.shape[0]-1, warped.shape[0] )
     left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
     right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
-    
+
     # Recast the x and y points into usable format for cv2.fillPoly()
     pts_left = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
     pts_right = np.array([np.flipud(np.transpose(np.vstack([right_fitx, ploty])))])
@@ -28,6 +29,7 @@ def vis(undist, warped, left_fit, right_fit, src, dst):
 
     # Combine the result with the original image, and transfer to RGB image
     result = cv2.addWeighted(undist, 1, newwarp, 0.3, 0)
-    result =  cv2.cvtColor(result, cv2.COLOR_BGR2RGB)
-    
+
     return result
+
+

@@ -2,24 +2,21 @@ import numpy as np
 
 
 class Line():
-    def __init__(self):
-        # was the line detected in the last iteration?
+    def __init__(self, n):
+        self.n = n
         self.detected = False
-        # x values of the last n fits of the line
-        self.recent_xfitted = []
-        #average x values of the fitted line over the last n iterations
-        self.bestx = None
-        #polynomial coefficients averaged over the last n iterations
-        self.best_fit = None
-        #polynomial coefficients for the most recent fit
-        self.current_fit = [np.array([False])]
-        #radius of curvature of the line in some units
-        self.radius_of_curvature = None
-        #distance in meters of vehicle center from the line
-        self.line_base_pos = None
-        #difference in fit coefficients between last and new fits
-        self.diffs = np.array([0,0,0], dtype='float')
-        #x values for detected line pixels
-        self.allx = None
-        #y values for detected line pixels
-        self.ally = None
+        self.last_fits = []
+        self.best_fit = np.array([0., 0., 0.])
+
+    def get_fit(self):
+        return self.best_fit
+
+    def add_fit(self, fit):
+        if len(self.last_fits) == self.n:
+            self.last_fits.pop(0)
+
+        self.last_fits.append(fit)
+
+        for i in range(3):
+            self.best_fit[i] = np.mean([fit[i] for fit in self.last_fits])
+
