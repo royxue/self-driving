@@ -97,6 +97,9 @@ def sliding_window_search(binary_warped, vis=False, file_name=None):
         plt.savefig(file_name)
         plt.clf()
 
+    if left_fit[0]*right_fit[0]<=0:
+        return None
+
     return (left_fit, right_fit)
 
 def sliding_window_search_with_known(binary_warped, left_fit, right_fit):

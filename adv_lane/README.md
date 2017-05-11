@@ -51,7 +51,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this, the code are in the `search.py`:
 
 ![Warp](./output_images/fit_test1.jpg)
 

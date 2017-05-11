@@ -1,5 +1,9 @@
 .DS_Store
+*.pyc
 *.zip
 traffic_signs/datas/
-*.pyc
+traffic_signs/*.pdf
+adv_lane/submission
+adv_lane/test_images
+adv_lane/*.mp4
 

@@ -102,9 +102,9 @@ def output_each_step():
 
 
 def output_video(filepath):
-    video = VideoFileClip(filepath)
+    video = VideoFileClip(filepath).subclip(40, 44)
     output = video.fl_image(process)
-    output.write_videofile('./out.mp4', audio=False)
+    output.write_videofile('./out_test.mp4', audio=False)
 
 def main():
     output_video('./project_video.mp4')
